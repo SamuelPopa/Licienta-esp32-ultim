@@ -189,7 +189,11 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' V'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
+        
     }));
 
 
@@ -215,7 +219,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' V'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
     }));
 
 
@@ -241,7 +248,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' V'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
     }));
  
 
@@ -268,7 +278,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' A'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
     }));
 
     const currentGauge2 = Highcharts.chart('container2-current2', Highcharts.merge(gaugeOptions, {
@@ -293,7 +306,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' A'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
     }));
 
     const currentGauge3 = Highcharts.chart('container3-current3', Highcharts.merge(gaugeOptions, {
@@ -318,7 +334,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
             tooltip: {
                 valueSuffix: ' A'
             }
-        }]
+        }],
+        credits: {
+        enabled: false
+    }
     }));
 
         var powerChart = Highcharts.chart('container-Pf', {
@@ -341,7 +360,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
         series: [{
             name: 'Power',
             data: [0] // Initial value
-        }]
+            }],
+        credits: {
+        enabled: false
+    }
     });
 
      var powerChart2 = Highcharts.chart('container2-Pf2', {
@@ -364,8 +386,12 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
         series: [{
             name: 'Power',
             data: [0] // Initial value
-        }]
+         }],
+        credits: {
+        enabled: false
+    }
      });
+    
        var powerChart3 = Highcharts.chart('container3-Pf3', {
         chart: {
             type: 'column'
@@ -386,7 +412,10 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
         series: [{
             name: 'Power',
             data: [0] // Initial value
-        }]
+           }],
+        credits: {
+        enabled: false
+    }
     });
 
  /* var chart = Highcharts.chart('container', {
