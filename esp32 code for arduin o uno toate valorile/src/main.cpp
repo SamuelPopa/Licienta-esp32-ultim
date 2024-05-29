@@ -141,6 +141,8 @@ void loop() {
     delay(500);                
     digitalWrite(ledPin, LOW);  
     delay(500); 
+    Serial.print("Adresa Ip: ");
+    Serial.println(WiFi.localIP());
   }
 
 static String jsonData; // Hold the incoming JSON data

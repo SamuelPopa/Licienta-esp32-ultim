@@ -4,146 +4,75 @@
     <title>DSP Data Viewer</title>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/justgage"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.6.1/justgage.min.js" integrity="sha512-QeISJM4NCnUgZl5++o/2d4FwppF+Hh62RbNeA9paupnQvq5KAVvf2ZN3KD99EDoqcSHi1kbG13JMyRXDKBQBSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.0/highcharts.js" integrity="sha512-8TTeb9L1dC4nfXg/eSMBpIqsuUSpWChW/HK4M+IfWmC9O5TVYkMhwiCQd/IlmdzznUQAiQprHTMpP3ye4Ab7Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.0/highcharts-more.min.js" integrity="sha512-rAXXnwMYKNeK+0kBbnncbyW5SEJH15Xr8yR+iEcyZfjYob6hem7lb6FInWETS3i455VPw6gqc43AgCMvUvq1og==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.0/modules/solid-gauge.src.min.js" integrity="sha512-xnCx7m/nrffYYFvdj1QN8evVfrTRoTqBLuMUqXddIleHGENu+7PMlfJDLZb02c14dh7dBhlqDvnjSmcbHNsK1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 </head>
 <body>
     <div id="generalInfo" class="container">
-         
-
         <h2>Informatii Generale</h2>
-         <p class="value">Date and Time: <span id="dateTime">Loading..............</span></p>
-    <input type="date" id="calendar" />
         <p class="value">ID: <span id="ID">N/A</span></p>
         <p class="value">CTR: <span id="CTR">N/A</span></p>
-        <p class="value">Frequency: <span id="fHz">N/A</span> Hz</p>
+        <p class="value">Frecventa: <span id="fHz">N/A</span> Hz</p>
         <p class="value">InullA: <span id="InullA">N/A</span></p>
         <p class="value">Isum: <span id="Isum">N/A</span></p>
-        <div id="container-frequency"></div>
+        <p class="value">Temperatura: <span id="temperature">N/A</span> °C</p>
+        <label for="standardCurrent">Val. Nat Tensiune:</label>
+        <input type="number" id="standardCurrent" name="standardCurrent" value="230">
+         <div id="container-temperature" class="gauge-container-small"></div>
+          <p class="value" style="position: absolute; top: 10px; right: 50px;">Data & Ora: <span id="currentDateTime">N/A</span></p>
     </div>
-
-
-<!---<div id="threePhaseGauge" style="width: 600px; height: 400px; margin: 0 auto"></div>--->
-
-
-<!---<div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>--->
-<!---<div id="voltageGaugeContainer" style="width: 300px; height: 200px; margin: 0 auto"></div>--->
-
-
-
-
-
-
-
-
-<style>
-       
-        #container-frequency {
-            width: 400px;
-            height: 200px;
-        
-        }
-    </style>
-
-
-
-
- 
-
-     <!--faza1-->
-     <div class="phase-container" id="phase1">
-        <h3>Phase 1</h3>
-        <p class="value">Current: <span id="I1rmsA">N/A</span></p>
-        <p class="value">Voltage: <span id="V1rmsV">N/A</span></p>
-        <div id="container-voltage" style="width: 150px; height: 100px; margin: 10"></div>
-        <div id="container-current" style="width: 150px; height: 100px; margin: 40"></div>
-
-        
-        <button onclick="togglePhaseDetails('phase1Details')">Arata mai mult</button>
-        <div id="phase1Details" class="phase-details">
-            <p>PF1: <span id="PF1">N/A</span></p>
-            <div id="container-Pf" style="width: 300px; height: 200px; margin: 10 auto"></div>
-            <p>P1WATT: <span id="P1WATT">N/A</span></p>
-            <p>P1VAR: <span id="P1VAR">N/A</span></p>
-            <div id="voltageGauge" style="width:200px; height:160px"></div>
-            
-
-        </div>
-    </div>
-     <!--faza2-->
-    <div class="phase-container" id="phase2">
-        <h3>Phase 2</h3>
-        <p class="value">Current: <span id="I2rmsA">N/A</span></p>
-        <p class="value">Voltage: <span id="V2rmsV">N/A</span></p>
-        <div id="container2-voltage2" style="width: 150px; height: 100px; margin: 10"></div>
-        <div id="container2-current2" style="width: 150px; height: 100px; margin: 40"></div>
-        
-        
-        <button onclick="togglePhaseDetails('phase2Details')">Arata mai mult</button>
-        <div id="phase2Details" class="phase-details">
-            <p>PF2: <span id="PF2">N/A</span></p>
-            <div id="container2-Pf2" style="width: 300px; height: 200px; margin: 10 auto"></div>
-            <p>P2WATT: <span id="P2WATT">N/A</span></p>
-            <p>P2VAR: <span id="P2VAR">N/A</span></p>
-            
-            <div id="phase2GaugeContainer" class="gauge-container"></div>
-        </div>
-     <!--faza3-->
-    <div class="phase-container" id="phase3">
-        <h3>Phase 3</h3>
-        <p class="value">Current: <span id="I3rmsA">N/A</span></p>
-        <p class="value">Voltage: <span id="V3rmsV">N/A</span></p>
-        <div id="container3-voltage3" style="width: 150px; height: 100px; margin: 10"></div>
-        <div id="container3-current3" style="width: 150px; height: 100px; margin: 40"></div>
-        <button onclick="togglePhaseDetails('phase3Details')">Arata mai mult</button>
-        <div id="phase3Details" class="phase-details">
-            <p>PF3: <span id="PF3">N/A</span></p>
-            <div id="container3-Pf3" style="width: 300px; height: 200px; margin: 10 auto"></div>
-            <p>P3WATT: <span id="P3WATT">N/A</span></p>
-            <p>P3VAR: <span id="P3VAR">N/A</span></p>
-            
-            <div id="phase3GaugeContainer" class="gauge-container"></div>
-        </div>
-     <!--info aditionala-->
-    <div id="additionalInfo" class="container">
-         <h2>Info Aditionala</h2>
-    <p class="value">InullA: <span id="InullA">N/A</span></p>
-    <p class="value">Isum: <span id="Isum">N/A</span></p>
-    <p class="value">Frequency: <span id="fHz">N/A</span></p>
-    </div>
-
-     <!--unghi faze-->
-    <div id="voltageAngles" class="container">
-        <h2>Unghi dintre faze</h2>
-    <p class="value">uUIa: <span id="uUIa">N/A</span></p>
-    <p class="value">uUIb: <span id="uUIb">N/A</span></p>
-    <p class="value">uUIc: <span id="uUIc">N/A</span></p>
-    </div>
-
-    <div id="AnglebetweenU&I" class="container">
-        <h2>Unghi dintre U si I</h2>
-    <p class="value">uUab: <span id="uUab">N/A</span></p>
-    <p class="value">uUac: <span id="uUac">N/A</span></p>
-    <p class="value">uUbc: <span id="uUbc">N/A</span></p>
-    </div>
-
-    <!--diagrama fazoriala-->
-   <div id="phaseDiagramContainer" class="container">
-        <h2>Diagrama fazelor</h2>
-        <canvas id="phaseDiagram" width="300" height="300"></canvas>
-   </div>
     
-    
+    <div class="gauges-row">
+        <div id="container-voltage" class="gauge-container"></div>
+        <div id="container2-voltage2" class="gauge-container"></div>
+        <div id="container3-voltage3" class="gauge-container"></div>
+        <div>
+            <p>Eroare Tensiune 1 %: <span id="percentage1">N/A</span></p>
+            <p>Eroare Tensiune 2 %: <span id="percentage2">N/A</span></p>
+            <p>Eroare Tensiune 3 %: <span id="percentage3">N/A</span></p>
+            <label for="maxPercentage">Max Eroare Tensiune %:</label>
+            <input type="text" id="maxPercentage" name="maxPercentage" readonly>
+        </div>
+    </div>
+
+    <div class="gauges-row">
+        <div id="container-current" class="gauge-container"></div>
+        <div id="container2-current2" class="gauge-container"></div>
+        <div id="container3-current3" class="gauge-container"></div>
+        <div id="container-inull" class="gauge-container"></div>
+    </div>
+
+    <div class="gauges-row">
+        <div id="container-Pf" class="gauge-container"></div>
+        <div id="container2-Pf2" class="gauge-container"></div>
+        <div id="container3-Pf3" class="gauge-container"></div>
+        <div id="containerPW" class="gauge-container"></div>
+    </div>
+
+    <div class="gauges-row">
+        <div id="containerPVAR1" class="gauge-container"></div>
+        <div id="containerungifaze" class="gauge-container"></div>
+        <div id="containerungifazecurenti" class="gauge-container"></div>
+        <div id="container-inull" class="gauge-container"></div>
+    </div>
+
+
+    <div class="gauges-row">
+        <div id="container_angle_V1_I1" class="gauge-container-small"></div>
+        <div id="container_angle_V2_I2" class="gauge-container-small"></div>
+        <div id="container_angle_V3_I3" class="gauge-container-small"></div>
+        
+    </div>
+
+
+    <div class="container">
+        
+        <div id="realtime-plot" style="width:100%; height:400px;"></div>
+    </div>
+   
     <script src="app.js"></script>
-    
 </body>
 </html>

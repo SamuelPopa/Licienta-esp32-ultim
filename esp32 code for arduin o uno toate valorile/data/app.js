@@ -1,346 +1,6 @@
-
-drawPhaseDiagram(120.938, 240.434, 119.496);
-
 document.addEventListener('DOMContentLoaded', function () {
-
-     // Initialize the gauge
-  /*  var voltageGauge = new JustGage({
-        id: "voltageGauge",
-        value: 0,
-        min: 0,
-        max: 300, // Set the maximum value to fit your expected data range
-        title: "Voltage Line 1",
-        label: "V",
-        decimals: 3,
-        pointer: true,
-        gaugeWidthScale: 0.6,
-        counter: true,
-        relativeGaugeSize: true,
-        donut: false // Set to true if you want a donut (ring) style gauge*
-}); */
-
-    
- const gaugeOptionsfr = {
-        chart: { type: 'gauge', plotBackgroundColor: null, plotBackgroundImage: null, plotBorderWidth: 0, plotShadow: false },
-        title: { text: 'Frecventa' },
-        pane: {
-            startAngle: -90, // Starting from the left (90 degrees from the top)
-            endAngle: 90, // Ending on the right (90 degrees from the top), making a half-circle
-            background: [{
-                // Background of the gauge itself
-                backgroundColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                    stops: [
-                        [0, '#FFF'],
-                        [1, '#333']
-                    ]
-                },
-                borderWidth: 0,
-                outerRadius: '09%'
-            }]
-        },
-        // The value axis
-        yAxis: {
-            min: 0,
-            max: 70, // Set this to the maximum frequency you expect
-            minorTickInterval: 'auto',
-            minorTickWidth: 1,
-            minorTickLength: 10,
-            minorTickPosition: 'inside',
-            minorTickColor: '#666',
-
-            tickPixelInterval: 30,
-            tickWidth: 2,
-            tickPosition: 'inside',
-            tickLength: 13,
-            tickColor: '#666',
-
-            labels: {
-                step: 2,
-                rotation: 'horizontal'
-            },
-            title: {
-                text: 'Hz'
-            },
-            plotBands: [{ // Only green and yellow bands, remove the red one
-                from: 0,
-                to: 70,
-                color: '#55BF3B' // Green
-            },
-            ]
-        },
-
-        series: [{
-            name: 'Frecventa',
-            data: [0], // Initial value
-            tooltip: {
-                valueSuffix: ' Hz'
-            }
-        }]
-    };
- 
-// Frequency gauge
-const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(gaugeOptionsfr, {
-    
-    
-    yAxis: {
-        min: 0,
-        max: 60, // Frequency range
-        title: { text: 'FRECVENTA', y:95 } // add text here, it's useful when you make a general page background here the text will overlap the backgroung making it look nice
-    },
-    series: [{
-        name: 'Frecventa',
-        data: [0], // Initial value
-        dataLabels: {
-            format: '<div style="text-align:center"><span style="font-size:17px">{y}</span><br/><span style="font-size:12px;opacity:0.4">Hz</span></div>'
-        },
-        tooltip: { valueSuffix: ' Hz' }
-    }],
-    credits: {
-        enabled: false
-    }
-}));
-
-
-    
-    
-    
-    
-   const gaugeOptions = {
-    chart: {
-        type: 'solidgauge'
-    },
-
-    title: null,
-
-    pane: {
-        center: ['50%', '85%'],
-        size: '140%',
-        startAngle: -90,
-        endAngle: 90,
-        background: {
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-        }
-    },
-
-    exporting: {
-        enabled: false
-    },
-
-    tooltip: {
-        enabled: false
-    },
-
-    // the value axis
-    yAxis: {
-        stops: [
-            [0.1, '#55BF3B'], // green
-            [0.5, '#DDDF0D'], // yellow
-            [0.9, '#DF5353'] // red
-        ],
-        lineWidth: 0,
-        tickWidth: 0,
-        minorTickInterval: null,
-        tickAmount: 2,
-        title: {
-            y: -70
-        },
-        labels: {
-            y: 16
-        }
-    },
-
-    plotOptions: {
-        solidgauge: {
-            dataLabels: {
-                y: 5,
-                borderWidth: 0,
-                useHTML: true
-            }
-        }
-    }
-};
-
-
-       // Voltage gauge
-    const voltageGauge = Highcharts.chart('container-voltage', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Voltaj'
-            },
-            labels: {
-                format: '{value} V'
-            }
-        },
-        series: [{
-            name: 'Voltaj',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:15px">{y}</span><br/>' +
-                        '<span style="font-size:6px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' V'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-        
-    }));
-
-
-    const voltageGauge2 = Highcharts.chart('container2-voltage2', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Voltaj2'
-            },
-            labels: {
-                format: '{value} V'
-            }
-        },
-        series: [{
-            name: 'Voltaj2',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:15px">{y}</span><br/>' +
-                        '<span style="font-size:6px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' V'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-    }));
-
-
-    const voltageGauge3 = Highcharts.chart('container3-voltage3', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Voltaj3'
-            },
-            labels: {
-                format: '{value} V'
-            }
-        },
-        series: [{
-            name: 'Voltaj3',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:15px">{y}</span><br/>' +
-                        '<span style="font-size:6px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' V'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-    }));
- 
-
-     // Current gauge
-    const currentGauge = Highcharts.chart('container-current', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Curent'
-            },
-            labels: {
-                format: '{value} A'
-            }
-        },
-        series: [{
-            name: 'Curent',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:25px">{y}</span><br/>' +
-                        '<span style="font-size:12px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' A'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-    }));
-
-    const currentGauge2 = Highcharts.chart('container2-current2', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Curent2'
-            },
-            labels: {
-                format: '{value} A'
-            }
-        },
-        series: [{
-            name: 'Curent2',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:25px">{y}</span><br/>' +
-                        '<span style="font-size:12px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' A'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-    }));
-
-    const currentGauge3 = Highcharts.chart('container3-current3', Highcharts.merge(gaugeOptions, {
-        yAxis: {
-            min: 0,
-            max: 300, // Adjust if your voltage can go above 300V
-            title: {
-                text: 'Curent3'
-            },
-            labels: {
-                format: '{value} A'
-            }
-        },
-        series: [{
-            name: 'Curent3',
-            data: [0], // Initial value
-            dataLabels: {
-                format: '<div style="text-align:center">' +
-                        '<span style="font-size:25px">{y}</span><br/>' +
-                        '<span style="font-size:12px;opacity:0.4">V</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' A'
-            }
-        }],
-        credits: {
-        enabled: false
-    }
-    }));
-
-        var powerChart = Highcharts.chart('container-Pf', {
+    // Power Factor Charts
+    var powerChart1 = Highcharts.chart('container-Pf', {
         chart: {
             type: 'column'
         },
@@ -355,18 +15,18 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
                 text: 'Puterea (W)'
             },
             min: 0,
-            max: 100 // Ensure this is adequate for the expected power values
+            max: 100
         },
         series: [{
             name: 'Power',
-            data: [0] // Initial value
-            }],
+            data: [0] // Val init
+        }],
         credits: {
-        enabled: false
-    }
+            enabled: false
+        }
     });
 
-     var powerChart2 = Highcharts.chart('container2-Pf2', {
+    var powerChart2 = Highcharts.chart('container2-Pf2', {
         chart: {
             type: 'column'
         },
@@ -381,18 +41,18 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
                 text: 'Puterea (W)'
             },
             min: 0,
-            max: 100 // Ensure this is adequate for the expected power values
+            max: 100 
         },
         series: [{
             name: 'Power',
-            data: [0] // Initial value
-         }],
+            data: [0] 
+        }],
         credits: {
-        enabled: false
-    }
-     });
-    
-       var powerChart3 = Highcharts.chart('container3-Pf3', {
+            enabled: false
+        }
+    });
+
+    var powerChart3 = Highcharts.chart('container3-Pf3', {
         chart: {
             type: 'column'
         },
@@ -407,34 +67,360 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
                 text: 'Puterea (W)'
             },
             min: 0,
-            max: 100 // Ensure this is adequate for the expected power values
+            max: 100 
         },
         series: [{
             name: 'Power',
-            data: [0] // Initial value
-           }],
+            data: [0] 
+        }],
         credits: {
-        enabled: false
-    }
+            enabled: false
+        }
     });
 
- /* var chart = Highcharts.chart('container', {
-    chart: {
-        type: 'gauge',
-        plotBackgroundColor: null,
-        plotBackgroundImage: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        backgroundColor: '#ffffff',
+    // Voltage Gauges
+    var voltageGauge1 = Highcharts.chart('container-voltage', {
+        chart: {
+            type: 'solidgauge'
         },
         title: {
-            text: '3-Phase Unghi Gaugeeee'
+            text: 'Voltaj 1'
         },
         pane: {
-            //startAngle: 0,
-            //endAngle: 360,
-        startAngle: 90,
-        endAngle: 90+360,
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 300,
+            title: {
+                text: 'Voltaj'
+            },
+            labels: {
+                format: '{value} V'
+            }
+            
+        },
+        series: [{
+            name: 'Voltaj',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">V</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' V'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    var voltageGauge2 = Highcharts.chart('container2-voltage2', {
+        chart: {
+            type: 'solidgauge'
+        },
+        title: {
+            text: 'Voltaj 2'
+        },
+        pane: {
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 300,
+            title: {
+                text: 'Voltaj'
+            },
+            labels: {
+                format: '{value} V'
+            }
+        },
+        series: [{
+            name: 'Voltaj',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">V</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' V'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    var voltageGauge3 = Highcharts.chart('container3-voltage3', {
+        chart: {
+            type: 'solidgauge'
+        },
+        title: {
+            text: 'Voltaj 3'
+        },
+        pane: {
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 300,
+            title: {
+                text: 'Voltaj'
+            },
+            labels: {
+                format: '{value} V'
+            }
+        },
+        series: [{
+            name: 'Voltaj',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">V</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' V'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    // Current Gauges
+    var currentGauge1 = Highcharts.chart('container-current', {
+        chart: {
+            type: 'solidgauge'
+        },
+        title: {
+            text: 'Curent 1'
+        },
+        pane: {
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100, 
+            title: {
+                text: 'Curent'
+            },
+            labels: {
+                format: '{value} A'
+            }
+        },
+        series: [{
+            name: 'Curent',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">A</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' A'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    var currentGauge2 = Highcharts.chart('container2-current2', {
+        chart: {
+            type: 'solidgauge'
+        },
+        title: {
+            text: 'Curent 2'
+        },
+        pane: {
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100, // Adjust this value as needed
+            title: {
+                text: 'Curent'
+            },
+            labels: {
+                format: '{value} A'
+            }
+        },
+        series: [{
+            name: 'Curent',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">A</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' A'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    var currentGauge3 = Highcharts.chart('container3-current3', {
+        chart: {
+            type: 'solidgauge'
+        },
+        title: {
+            text: 'Curent 3'
+        },
+        pane: {
+            center: ['50%', '85%'],
+            size: '120%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100, // Adjust this value as needed
+            title: {
+                text: 'Curent'
+            },
+            labels: {
+                format: '{value} A'
+            }
+        },
+        series: [{
+            name: 'Curent',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:15px">{y}</span><br/><span style="font-size:12px;opacity:0.4">A</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' A'
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+    // Power Distribution Chart (W)
+    var powerDistributionChart = Highcharts.chart('containerPW', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Distributia Puterii'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true, // Show data labels
+                    format: '<b>{point.name}</b>: {point.y}', // Display name and value
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Putere W',
+            data: []
+        }]
+    });
+
+    // Power Distribution Chart (VAR)
+    var powerVarChart1 = Highcharts.chart('containerPVAR1', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Distributia Puterii1(VAR)'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true, // Show data labels
+                    format: '<b>{point.name}</b>: {point.y}', // Display name and value
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Power (VAR)',
+            data: []
+        }],
+        colors: ['#ff9999', '#ffcc99', '#99ff99'] // Different color palette for Power (VAR) chart
+    });
+
+    // Phase Angle Chart
+    var phaseAngleChart = Highcharts.chart('containerungifaze', {
+        chart: {
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Unghi dintre faze'
+        },
+        pane: {
+            startAngle: 90,
+            endAngle: 450,
             background: [{
                 backgroundColor: {
                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
@@ -443,233 +429,683 @@ const chartFrequency = Highcharts.chart('container-frequency', Highcharts.merge(
                         [1, '#333']
                     ]
                 },
-            borderWidth: 0,
-            outerRadius: '105%'
-        }]
+                borderWidth: 0,
+                outerRadius: '109%'
+            }, {
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                    stops: [
+                        [0, '#333'],
+                        [1, '#FFF']
+                    ]
+                },
+                borderWidth: 1,
+                outerRadius: '107%'
+            }, {
+                // Additional pane pt marcaje 360 grade 
+                background: null,
+                outerRadius: '105%',
+                innerRadius: '103%',
+                backgroundColor: '#DDD'
+            }]
         },
-      yAxis: {
-      reversed: true,
+        yAxis: {
+            min: 0,
+            max: 360,
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: 'Degrees'
+            },
+            plotBands: [{
+                from: 0,
+                to: 120,
+                color: '#55BF3B' // Green
+            }, {
+                from: 120,
+                to: 240,
+                color: '#DDDF0D' // Yellow
+            }, {
+                from: 240,
+                to: 360,
+                color: '#DF5353' // Red
+            }]
+        },
+        series: [{
+            name: 'Phase AB',
+            data: [0],
+            color: 'red',
+            tooltip: {
+                valueSuffix: ' degrees'
+            }
+        }, {
+            name: 'Phase AC',
+            data: [0],
+            color: 'blue',
+            tooltip: {
+                valueSuffix: ' degrees'
+            }
+        }, {
+            name: 'Phase BC',
+            data: [0],
+            color: 'green',
+            tooltip: {
+                valueSuffix: ' degrees'
+            }
+        }]
+    });
+
+var phaseAngleChartI = Highcharts.chart('containerungifazecurenti', {
+    chart: {
+        type: 'gauge',
+        plotBackgroundColor: null,
+        plotBackgroundImage: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: 'Unghi Curenti'
+    },
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [{}, {}, {}, {}] //arrays goale ca  background-ul default sa nu mai fie
+    },
+    yAxis: {
         min: 0,
         max: 360,
-        tickInterval: 30,
+        minorTickInterval: 'auto',
+        minorTickWidth: 1,
+        minorTickLength: 10,
+        minorTickPosition: 'inside',
+        minorTickColor: '#666',
+        tickPixelInterval: 30,
+        tickWidth: 2,
+        tickPosition: 'inside',
+        tickLength: 10,
+        tickColor: '#666',
         labels: {
-            distance: 12,
-            rotation: 'auto',
-            format: '{value}°'
-        }
+            step: 2,
+            rotation: 'auto'
         },
-      series: [{
-        id: 'phaseAB',
-        name: 'Phase A-BBBB',
-        data: [{
-            y: 120,
-            dial: {
-                radius: '100%',
-                baseWidth: 5,
-                baseLength: '50%', // stop at middle point
-                rearLength: '0%',
-                backgroundColor: 'red', // Red colored needle for A-B
-                borderColor: 'red'
-            }
-        }],
-        color: 'red'
-    }, {
-        data: [{
-            id: 'phaseAC',
-        name: 'Phase A-CCCCCC',
-            y: 240,
-            dial: {
-                radius: '100%',
-                baseWidth: 5,
-                baseLength: '50%', // stop at middle point
-                rearLength: '0%',
-                backgroundColor: 'blue', // Red colored needle for A-B
-                borderColor: 'blue'
-            }
-        }],
-        color: 'blue'
-    }, {
-        data: [{
-          id: 'phaseBC',
-          name: 'Phase B-CCCCC',
-            y: 0,
-            dial: {
-                radius: '100%',
-                baseWidth: 5,
-                baseLength: '50%', // stop at middle point
-                rearLength: '0%',
-                backgroundColor: 'green', // Red colored needle for A-B
-                borderColor: 'green'
-            }
-        }],
-        color: 'green'
-    }]
-});*/
-
-  
-
-var ws = new WebSocket('ws://' + window.location.hostname + '/ws');
-
-  ws.onmessage = function (event) {
-      var data = JSON.parse(event.data);
-        //var angleAB = data.uUab;
-        //var angleAC = data.uUac;
-        //var angleBC = data.uUbc;
-
-    document.getElementById('ID').textContent = data.ID;
-    document.getElementById('CTR').textContent = data.CTR;
-
-    
-    document.getElementById('I1rmsA').textContent = data.I1rmsA;
-    document.getElementById('V1rmsV').textContent = data.V1rmsV;
-    document.getElementById('PF1').textContent = data.PF1;
-    document.getElementById('P1WATT').textContent = data.P1WATT;
-    document.getElementById('P1VAR').textContent = data.P1VAR;
-    // Update Phase 2 values
-    document.getElementById('I2rmsA').textContent = data.I2rmsA;
-    document.getElementById('V2rmsV').textContent = data.V2rmsV;
-    document.getElementById('PF2').textContent = data.PF2;
-    document.getElementById('P2WATT').textContent = data.P2WATT;
-    document.getElementById('P2VAR').textContent = data.P2VAR;
-    // Update Phase 3 values
-    document.getElementById('I3rmsA').textContent = data.I3rmsA;
-    document.getElementById('V3rmsV').textContent = data.V3rmsV;
-    document.getElementById('PF3').textContent = data.PF3;
-    document.getElementById('P3WATT').textContent = data.P3WATT;
-    document.getElementById('P3VAR').textContent = data.P3VAR;
-    // Update additional info
-    document.getElementById('InullA').textContent = data.InullA;
-    document.getElementById('Isum').textContent = data.Isum;
-    document.getElementById('fHz').textContent = data.fHz;
-    //update valori 
-    // Update valori pentru Phase 1, Phase 2, Phase 3, and Additional Info
-    document.getElementById('uUab').textContent = data.uUab;
-    document.getElementById('uUac').textContent = data.uUac;
-    document.getElementById('uUbc').textContent = data.uUbc;
-    
-  
-    document.getElementById('uUIa').textContent = data.uUIa;
-    document.getElementById('uUIb').textContent = data.uUIb;
-    document.getElementById('uUIc').textContent = data.uUIc;
-    
-    
-        //chart.get('phaseAB').setData([data.uUab]); // Update Phase A-B angle
-        //chart.get('phaseAC').setData([data.uUac]); // Update Phase A-C angle
-        //chart.get('phaseBC').setData([data.uUbc]); // Update Phase B-C angle
-      
-
-      //var voltageValue = parseFloat(data.V1rmsV); // Make sure this key matches your data
-        //if(chart.series[0]) {
-        //chart.series[0].points[0].update(voltageValue);
-    //}
-
-    // Update the gauge and the voltage value displayed below it
-       // voltageGauge.refresh(data.V1rmsV);
-        //document.getElementById('voltageValue').textContent = data.V1rmsV.toFixed(3); // 3 decimal places n
-        
- 
-            
-    // Check if the points exist and update them with the new data
-        
-    // Update the phase diagram
-    drawPhaseDiagram(parseFloat(data.uUab), parseFloat(data.uUac), parseFloat(data.uUbc));
-    
-        
-      //chart.redraw();
-      
-   if (voltageGauge && voltageGauge.series && voltageGauge.series[0].points[0]) {
-        voltageGauge.series[0].points[0].update(parseFloat(data.V1rmsV));
-      }
-      if (voltageGauge2 && voltageGauge2.series && voltageGauge2.series[0].points[0]) {
-        voltageGauge2.series[0].points[0].update(parseFloat(data.V2rmsV));
-      }
-      if (voltageGauge && voltageGauge.series && voltageGauge.series[0].points[0]) {
-        voltageGauge.series[0].points[0].update(parseFloat(data.V1rmsV));
-      }
-      
-      if (currentGauge && currentGauge.series && currentGauge.series[0].points[0]) {
-        currentGauge.series[0].points[0].update(parseFloat(data.I1rmsA));
-      }
-      if (currentGauge2 && currentGauge2.series && currentGauge2.series[0].points[0]) {
-        currentGauge2.series[0].points[0].update(parseFloat(data.I2rmsA));
-      }
-      if (currentGauge3 && currentGauge3.series && currentGauge3.series[0].points[0]) {
-        currentGauge3.series[0].points[0].update(parseFloat(data.I3rmsA));
-      }
-
-
-      
-      if (chartFrequency) {
-            chartFrequency.series[0].points[0].update(data.fHz);
-      }
-      
-       if(data.P1WATT !== undefined) {
-            // Update the power chart with the new value
-            powerChart.series[0].setData([parseFloat(data.P1WATT)]);
-      }
-      if(data.P2WATT !== undefined) {
-            // Update the power chart with the new value
-            powerChart2.series[0].setData([parseFloat(data.P2WATT)]);
-      }
-      if(data.P3WATT !== undefined) {
-            // Update the power chart with the new value
-            powerChart3.series[0].setData([parseFloat(data.P3WATT)]);
+        title: {
+            text: 'Degrees'
+        },
+        plotBands: [] // Remove colored plot bands
+    },
+    series: [{
+        name: 'I1-I2',
+        data: [0],
+        color: '#FF0000', // Red
+        dial: {
+            backgroundColor: '#FF0000',
+            baseWidth: 5, // Slimmer needle
+            topWidth: 1,
+            baseLength: '0%',
+            radius: '100%'
+        },
+        tooltip: {
+            valueSuffix: ' degrees'
         }
-
-
-  };
-   
-    
-
-
+    }, {
+        name: 'I1-I3',
+        data: [0],
+        color: '#00FF00', // Green
+        dial: {
+            backgroundColor: '#00FF00',
+            baseWidth: 5, // Slimmer needle
+            topWidth: 1, 
+            baseLength: '0%',
+            radius: '100%'
+        },
+        tooltip: {
+            valueSuffix: ' degrees'
+        }
+    }, {
+        name: 'I2-I3',
+        data: [0],
+        color: '#0000FF', // Blue
+        dial: {
+            backgroundColor: '#0000FF',
+            baseWidth: 5, // Slimmer needle
+            topWidth: 1, //  needle - a more modern look
+            baseLength: '0%',
+            radius: '100%'
+        },
+        tooltip: {
+            valueSuffix: ' degrees'
+        }
+    }]
 });
 
 
+ //  Chart Temperatura
+    var temperatureChart = Highcharts.chart('container-temperature', {
+        chart: {
+            type: 'bar',
+            inverted: true,
+        },
+        title: {
+            text: 'Temperatura'
+        },
+        xAxis: {
+            categories: ['DSP']
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: ''
+            }
+        },
+        series: [{
+            name: '',
+            data: [0], // Initial value
+            dataLabels: {
+                enabled: true,
+                format: '{point.y} °C'
+            },
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 0 },
+                stops: [
+                    [0, '#00f'],
+                    [1, '#f00']
+                ]
+            }
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+
+     
+    var realtimePlot = Highcharts.chart('realtime-plot', {
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg, 
+            marginRight: 10,
+            events: {
+                load: function () {
+                    // Functie pt date updatate
+                    var series = this.series;
+                    setInterval(function () {
+                        if (ws.readyState === WebSocket.OPEN) {
+                            ws.send('get_data'); // Request new data from server
+                        }
+                    }, 5000); // freq cu Arduino data tx trimise
+                }
+            }
+        },
+        title: {
+            text: 'Valori efective'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        exporting: {
+            enabled: true
+        },
+        series: [{
+            name: 'V1rms',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+        },
+        
+        {
+            name: 'V2rms',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'V3rms ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'I1rms ',
+            data: (function () {
+               
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'I2rms ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        {
+            name: 'I3rms ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'Inull ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'P1kW ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        
+            {
+            name: 'P2kW ',
+            data: (function () {
+                // generate an array of initial data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+        {
+            name: 'P3kW ',
+            data: (function () {
+                // generate an array of initial data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+            {
+            name: 'P1kVAR ',
+            data: (function () {
+                
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+            {
+            name: 'P2kVAR ',
+            data: (function () {
+                // generate an array of initial data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * (240 - 215) + 215
+                    });
+                }
+                return data;
+            }())
+            },
+            {
+            name: 'P3kVAR',
+            data: (function () {
+                // generate an array of initial data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random() * (0.9 - 0) + 0
+                        });
+                        }
+                return data;
+            }())
+        }]
+    });
+
+    // chart pentru small gauges
+    var smallGaugeOptions = {
+        chart: {
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
+            backgroundColor: '#FFFFFF',
+            width: 350,
+            height: 270
+        },
+        title: {
+            text: ''
+        },
+        pane: {
+            center: ['35%', '50%'],
+            startAngle: -90,
+            endAngle: 90,
+            background: null
+        },
+        yAxis: {
+            min: 0,
+            max: 270,
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: ''
+            },
+            plotBands: []
+        },
+        series: [{
+            name: 'Angle',
+            data: [0],
+            tooltip: {
+                valueSuffix: ' degrees'
+            }
+        }]
+    };
+
+    // V1-I1 Gauge
+    var gaugeV1I1 = Highcharts.chart('container_angle_V1_I1', Highcharts.merge(smallGaugeOptions, {
+        title: {
+            text: 'V1-I1',
+            
+        }
+    }));
+
+    // V2-I2 Gauge
+    var gaugeV2I2 = Highcharts.chart('container_angle_V2_I2', Highcharts.merge(smallGaugeOptions, {
+        title: {
+            text: 'V2-I2'
+        }
+    }));
+
+    // V3-I3 Gauge
+    var gaugeV3I3 = Highcharts.chart('container_angle_V3_I3', Highcharts.merge(smallGaugeOptions, {
+        title: {
+            text: 'V3-I3'
+        }
+    }));
+
+   var ws = new WebSocket('ws://' + window.location.hostname + '/ws');
     
-function togglePhaseDetails(detailId) {
-    const detailsElement = document.getElementById(detailId);
-    detailsElement.style.display = detailsElement.style.display === 'block' ? 'none' : 'block';
-}
 
+    const standardCurrentInput = document.getElementById('standardCurrent');
+    const percentageDifferences = [];
 
-
-
-function drawPhaseDiagram(uUab, uUac, uUbc) {
-    var canvas = document.getElementById('phaseDiagram');
-    if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-        var width = canvas.width;
-        var height = canvas.height;
-        var centerX = width / 2;
-        var centerY = height / 2;
-        var radius = Math.min(centerX, centerY) * 0.8; // Adjust to fit inside the canvas
-
-        ctx.clearRect(0, 0, width, height); // Clear the canvas
-
-        // Assuming uUab, uUac, and uUbc are in degrees and converting them to radians
-        var angleA = 0; // Starting angle for phase A
-        var angleB = angleA + uUab * (Math.PI / 180); // Angle for phase B
-        var angleC = angleA + uUac * (Math.PI / 180); // Angle for phase C
-
-        // Draw the lines
-        drawLine(ctx, centerX, centerY, angleA, radius, 'Red');
-        drawLine(ctx, centerX, centerY, angleB, radius, 'Yellow');
-        drawLine(ctx, centerX, centerY, angleC, radius, 'Blue');
+    function updatePercentageDifference(standardCurrent, currentValue) {
+        const percentageDifference = ((currentValue / standardCurrent) - 1) * 100;
+        return percentageDifference.toFixed(2);
     }
-}
-
-function drawLine(ctx, x, y, angle, length, color) {
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + length * Math.cos(angle), y + length * Math.sin(angle));
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-}
 
 
+    // Conexiunea WebSocket si data update
+    var ws = new WebSocket('ws://' + window.location.hostname + '/ws');
+    ws.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        
+        document.getElementById('ID').textContent = data.ID;
+        document.getElementById('CTR').textContent = data.CTR;
+        document.getElementById('fHz').textContent = data.fHz + ' Hz';
+        document.getElementById('InullA').textContent = data.InullA;
+        document.getElementById('Isum').textContent = data.Isum;
+        document.getElementById('temperature').textContent = data.TbC;
+
+
+        const standardCurrent = parseFloat(standardCurrentInput.value);
+
+        const currentValue1 = data.I1rmsA;
+        const percentage1 = updatePercentageDifference(standardCurrent, currentValue1);
+        document.getElementById('percentage1').textContent = percentage1;
+        percentageDifferences[0] = parseFloat(percentage1);
+
+        const currentValue2 = data.I2rmsA;
+        const percentage2 = updatePercentageDifference(standardCurrent, currentValue2);
+        document.getElementById('percentage2').textContent = percentage2;
+        percentageDifferences[1] = parseFloat(percentage2);
+
+        const currentValue3 = data.I3rmsA;
+        const percentage3 = updatePercentageDifference(standardCurrent, currentValue3);
+        document.getElementById('percentage3').textContent = percentage3;
+        percentageDifferences[2] = parseFloat(percentage3);
+
+        const maxPercentage = Math.max(...percentageDifferences);
+        document.getElementById('maxPercentage').value = maxPercentage.toFixed(2);
+
+        
+        //  Tensiune Gauges Update
+        voltageGauge1.series[0].points[0].update(parseFloat(data.V1rmsV));
+        voltageGauge2.series[0].points[0].update(parseFloat(data.V2rmsV));
+        voltageGauge3.series[0].points[0].update(parseFloat(data.V3rmsV));
+
+        //  Current Gauges Update
+        currentGauge1.series[0].points[0].update(parseFloat(data.I1rmsA));
+        currentGauge2.series[0].points[0].update(parseFloat(data.I2rmsA));
+        currentGauge3.series[0].points[0].update(parseFloat(data.I3rmsA));
+
+        //  Power Factor Charts Update
+        powerChart1.series[0].setData([parseFloat(data.P1WATT)]);
+        powerChart2.series[0].setData([parseFloat(data.P2WATT)]);
+        powerChart3.series[0].setData([parseFloat(data.P3WATT)]);
+
+        // Update Power Distribution Charts
+        powerDistributionChart.series[0].setData([
+            { name: 'P1', y: data.P1WATT },
+            { name: 'P2', y: data.P2WATT },
+            { name: 'P3', y: data.P3WATT }
+        ]);
+        powerVarChart1.series[0].setData([
+            { name: 'P1', y: data.P1VAR },
+            { name: 'P2', y: data.P2VAR },
+            { name: 'P3', y: data.P3VAR }
+        ]);
+
+        // Update Phase Angle Chart
+        phaseAngleChart.series[0].setData([data.uUab]);
+        phaseAngleChart.series[1].setData([data.uUac]);
+        phaseAngleChart.series[2].setData([data.uUbc]);
+
+        //Update Phase Current Angle Chart
+        phaseAngleChartI.series[0].setData([data.uIab]);
+        phaseAngleChartI.series[1].setData([data.uIac]);
+        phaseAngleChartI.series[2].setData([data.uIbc]);
+
+        // Update angle gauges V-I
+        gaugeV1I1.series[0].setData([parseFloat(data.uUIa)]);
+        gaugeV2I2.series[0].setData([parseFloat(data.uUIb)]);
+        gaugeV3I3.series[0].setData([parseFloat(data.uUIc)]);
+
+        // Temperature Bar Chart  Update
+        temperatureChart.series[0].setData([parseFloat(data.TbC)]);
+        
+        // Update real-time plot with voltage and current data
+        var currentTime = new Date(); //  local time
+        var x = currentTime.getTime(); // time in milliseconds 
+        
+       
+
+        realtimePlot.series[0].addPoint([x, parseFloat(data.V1rmsV)], true, true);
+        realtimePlot.series[1].addPoint([x, parseFloat(data.V2rmsV)], true, true);
+        realtimePlot.series[2].addPoint([x, parseFloat(data.V3rmsV)], true, true);
+        realtimePlot.series[3].addPoint([x, parseFloat(data.I1rmsA)], true, true);
+        realtimePlot.series[4].addPoint([x, parseFloat(data.I2rmsA)], true, true);
+        realtimePlot.series[5].addPoint([x, parseFloat(data.I3rmsA)], true, true);
+        realtimePlot.series[6].addPoint([x, parseFloat(data.InullA)], true, true);
+        realtimePlot.series[7].addPoint([x, parseFloat(data.P1WATT)], true, true);
+        realtimePlot.series[8].addPoint([x, parseFloat(data.P2WATT)], true, true);
+        realtimePlot.series[9].addPoint([x, parseFloat(data.P3WATT)], true, true);
+        realtimePlot.series[10].addPoint([x, parseFloat(data.P1VAR)], true, true);
+        realtimePlot.series[11].addPoint([x, parseFloat(data.P2VAR)], true, true);
+        realtimePlot.series[12].addPoint([x, parseFloat(data.P3VAR)], true, true);
 
 
 
+        // Update date and time display
+        document.getElementById('currentDateTime').textContent = currentTime.toLocaleString();
+    };
 
+    const initialCurrentValue = parseFloat(document.getElementById('I1rmsA').textContent);
+    const initialStandardCurrent = parseFloat(standardCurrentInput.value);
+    updatePercentageDifference(initialStandardCurrent, initialCurrentValue);
+
+   
+
+    // Initial call to display date and time immediately
+    document.getElementById('currentDateTime').textContent = new Date().toLocaleString();
+});
 
